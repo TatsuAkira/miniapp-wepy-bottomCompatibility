@@ -4,6 +4,6 @@
 ---
 
 #### 此 demo 包含自定义导航,如需处理底部全面屏的兼容 , 可复制其中部分代码
--> 1.在首页或入口页,获取用户信息,判断是否为全面屏,代码在 onload 内(只需存一次): wx.getSystemInfo.... 如果是全面屏就保存到 Storage 去
--> 2.在要用的页面中,onLoad 时判断是否有 Storage 里保存的 safeHeight 值,如果有就吧值取到,赋值到 data 中去(值是 ui 或产品定的安全距离)
--> 3.在底部要做兼容处理的 view 中直接写行内样式, 把要调整的样式通过取到的 safeHeight 赋值上去(可以自行做调整,不一定要用 padding-bottom)
+* -> 1.在首页或入口页,获取用户信息,判断是否为全面屏,代码在 onload 内(只需存一次): wx.getSystemInfo.... 如果是全面屏就保存到 Storage 去
+* -> 2.在要用的页面中,onLoad 时判断是否有 Storage 里保存的 safeHeight 值,如果有就吧值取到,赋值到 data 中去(值是 ui 或产品定的安全距离)
+* -> 3.在底部要做兼容处理的 view 中直接写行内样式, 把要调整的样式通过取到的 safeHeight 赋值上去(可以自行做调整,不一定要用 padding-bottom)
