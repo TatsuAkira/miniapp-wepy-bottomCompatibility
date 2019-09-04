@@ -74,7 +74,11 @@ export default class moban extends wepy.page {
   }
 
   methods = {
+
     // 1.点击返回上一层  如果要多层 改变delpa的值 。如果delta大于返回页的个数，则返回home
+
+    // 1.点击返回上一层  如果要多层 改变delia的值 。如果delta大于返回页的个数，则返回home
+
     backOne() {
       wepy.navigateBack({
         delta: 1
