@@ -21,64 +21,64 @@
 </template>
 
 <script>
-import wepy from 'wepy'
+import wepy from "wepy";
 
 export default class moban extends wepy.page {
   config = {
-    navigationStyle: 'custom'
+    navigationStyle: "custom"
   };
   data = {
-    paddingNav: '', // 动态设置顶部返回按钮和文字距离头部的高度
-    navheight: '', // 整个导航高度
-    capsuleHeight: '', // 动态设置头部固定栏内标题和返回一行的高度
-    contentHeight: '', // 动态设置头部到内容的距离
-    safeHeight: '' // 兼容苹果全面屏高度
+    paddingNav: "", // 动态设置顶部返回按钮和文字距离头部的高度
+    navheight: "", // 整个导航高度
+    capsuleHeight: "", // 动态设置头部固定栏内标题和返回一行的高度
+    contentHeight: "", // 动态设置头部到内容的距离
+    safeHeight: "" // 兼容苹果全面屏高度
   };
   onLoad() {
-    this.gethight()
+    this.gethight();
     // 1.获取用户信息 , 判断是否是苹果刘海机型
     // 1-2.保存到storageSync里去
     // 注意:只需在首页或者入口页设置判断是否为苹果全面屏,保存数据后进入其它也获取判断是否有Storage就行
     wx.getSystemInfo({
       success(res) {
-        console.log('用户手机信息', res)
-        let safe = res.safeArea.bottom - res.safeArea.height
+        console.log("用户手机信息", res);
+        let safe = res.safeArea.bottom - res.safeArea.height;
         if (safe >= 44) {
-          console.log('是苹果全面屏')
+          console.log("是苹果全面屏");
           // 保存到缓存中, 设置的值可以自行调整 ,此值为产品以及ui提出的兼容安全高度
-          wepy.setStorageSync('safeHeight', 20)
+          wepy.setStorageSync("safeHeight", 20);
         }
       }
-    })
+    });
     // 2.获取首页中保存的苹果全面屏信息设置兼容性 如果为null则不做处理
-    const res = wepy.getStorageSync('safeHeight') || null
-    console.log('取到的手机信息', res)
+    const res = wepy.getStorageSync("safeHeight") || null;
+    console.log("取到的手机信息", res);
     if (res !== null) {
-      this.safeHeight = res
+      this.safeHeight = res;
     } else {
-      this.safeHeight = 0
+      this.safeHeight = 0;
     }
   }
   // 1. 获取胶囊高度
   gethight() {
-    const res = wx.getMenuButtonBoundingClientRect()
-    console.log(res)
+    const res = wx.getMenuButtonBoundingClientRect();
+    console.log(res);
     // 2. 手机顶部到胶囊顶部的距离
-    this.paddingNav = res.top + 'px'
+    this.paddingNav = res.top + "px";
     // 3.动态设置整个导航的高度
-    this.navheight = res.height + 6 + 'px'
+    this.navheight = res.height + 6 + "px";
     // 4.动态设置和胶囊高度一致的在导航内的块元素
-    this.capsuleHeight = res.height + 'px'
+    this.capsuleHeight = res.height + "px";
     // 4.动态设置头部到内容的距离
-    this.contentHeight = res.bottom + 6 + 'px'
+    this.contentHeight = res.bottom + 6 + "px";
   }
 
   methods = {
-    // 1.点击返回上一层  如果要多层 改变delta的值 。如果delta大于返回页的个数，则返回home
+    // 1.点击返回上一层  如果要多层 改变deloa的值 。如果delta大于返回页的个数，则返回home
     backOne() {
       wepy.navigateBack({
         delta: 1
-      })
+      });
     }
   };
 }
